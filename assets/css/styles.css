@@ -1,0 +1,18 @@
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+
+:root {
+  --ui-bg: #edf5f2; 
+  --ui-border: #d5e0dc;
+  --ui-text: #1e1e1e;
+  --ui-text-muted: #555555;
+  --ui-accent: #4a8f8a;
+  --main-font: 'Syne Mono', Sans-Serif;
+  --second-font: Monospace, Sans-Serif;
+}
+
+body {
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  font-family: var(--main-font);
+}
