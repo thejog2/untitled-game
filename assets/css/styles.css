@@ -21,6 +21,10 @@ body {
 
 /* Navigation */
 
+.navbar {
+  background-color: var(--ui-accent) !important;
+  border-bottom: 2px solid var(--ui-border);
+}
 /* Logo Animation */
 
 .animated-logo {
@@ -52,4 +56,15 @@ body {
 .animated-logo:hover {
   transform: scale(1.08) rotate(-2deg);
   transition: transform 0.2s ease;
+}
+
+/* Main Content */
+
+/* Footer */
+.footer {
+  background-color: var(--ui-accent);
+  color: var(--ui-bg);
+  padding: 15px 0;
+  text-align: center;
+  border-top: 2px solid var(--ui-border);
 }
