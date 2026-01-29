@@ -1,141 +1,188 @@
 <!doctype html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
 
     <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+</head>
+
+<body class="d-flex flex-column min-vh-100">
     <!-- NavBar -->
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
-        <a class="navbar-brand d-flex align-items-center" href="#">
-          <div class="logo-placeholder bg-secondary me-2"></div>
-          <h1 class="fw-bold">Placeholder Title</h1>
-        </a>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-3">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <div class="logo-placeholder bg-secondary me-2"></div>
+                <h1 class="fw-bold">Placeholder Title</h1>
+            </a>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarButtons"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtons">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="navbarButtons"
-        >
-          <div class="navbar-nav gap-2">
-            <button
-              class="btn btn-outline-light"
-              data-bs-toggle="modal"
-              data-bs-target="#instructionsModal"
-            >
-              Instructions
-            </button>
-            <button
-              class="btn btn-outline-light"
-              data-bs-toggle="modal"
-              data-bs-target="#themesModal"
-            >
-              Themes
-            </button>
-            <button
-              class="btn btn-outline-light"
-              data-bs-toggle="collapse"
-              data-bs-target="#keyboardPanel"
-            >
-              Arrow Keys
-            </button>
-          </div>
-        </div>
-      </nav>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarButtons">
+                <div class="navbar-nav gap-2">
+                    <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#instructionsModal">
+                        Instructions
+                    </button>
+                    <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#themesModal">
+                        Themes
+                    </button>
+                    <button class="btn btn-outline-light" data-bs-toggle="collapse" data-bs-target="#keyboardPanel">
+                        Arrow Keys
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-      <!-- COLLAPSIBLE KEYBOARD PANEL -->
-      <div class="collapse bg-dark p-3" id="keyboardPanel">
-        <div class="d-flex flex-column align-items-center text-white">
-          <div class="btn-group mb-2">
-            <button class="btn btn-secondary arrow-btn" data-key="ArrowUp">
-              ▲
-            </button>
-          </div>
-          <div class="btn-group">
-            <button class="btn btn-secondary arrow-btn" data-key="ArrowLeft">
-              ◀
-            </button>
-            <button class="btn btn-secondary arrow-btn" data-key="ArrowDown">
-              ▼
-            </button>
-            <button class="btn btn-secondary arrow-btn" data-key="ArrowRight">
-              ▶
-            </button>
-          </div>
-        </div>
-      </div>
-      <!-- INSTRUCTIONS MODAL -->
-      <div class="modal fade" id="instructionsModal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title">Instructions</h2>
-              <button class="btn-close" data-bs-dismiss="modal"></button>
+        <!-- INSTRUCTIONS MODAL -->
+        <div class="modal fade" id="instructionsModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Instructions</h2>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                Use the arrow keys to move your snake.
+                            </li>
+                            <li class="list-group-item">Try not to let the food spoil.</li>
+                            <li class="list-group-item">
+                                Don't hit the wall! It will crash your snake!
+                            </li>
+                            <li class="list-group-item">
+                                For mobile & tablet users. Please use the provided arrows
+                                keys.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  Use the arrow keys to move your snake.
-                </li>
-                <li class="list-group-item">Try not to let the food spoil.</li>
-                <li class="list-group-item">
-                  Don't hit the wall! It will crash your snake!
-                </li>
-                <li class="list-group-item">
-                  For mobile & tablet users. Please use the provided arrows
-                  keys.
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </div>
 
-      <!-- THEMES MODAL -->
-      <div class="modal fade" id="themesModal" tabindex="-1">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h2 class="modal-title">Themes</h2>
-              <button class="btn-close" data-bs-dismiss="modal"></button>
+        <!-- THEMES MODAL -->
+        <div class="modal fade" id="themesModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title">Themes</h2>
+                        <button class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-2">
+                            <div class="col-6"> <button class="btn btn-primary w-100 theme-btn" data-theme="classic"
+                                    data-bs-dismiss="modal">Default</button> </div>
+                            <div class="col-6"> <button class="btn btn-secondary w-100 theme-btn" data-theme="dark"
+                                    data-bs-dismiss="modal">Theme 1</button> </div>
+                            <div class="col-6"> <button class="btn btn-success w-100 theme-btn" data-theme="neon"
+                                    data-bs-dismiss="modal">Theme 2</button> </div>
+                            <div class="col-6"> <button class="btn btn-warning w-100 theme-btn" data-theme="retro"
+                                    data-bs-dismiss="modal">Theme 3</button> </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-             <div class="row g-2"> 
-                <div class="col-6"> <button class="btn btn-primary w-100 theme-btn" data-theme="classic" data-bs-dismiss="modal">Default</button> </div> 
-                <div class="col-6"> <button class="btn btn-secondary w-100 theme-btn" data-theme="dark" data-bs-dismiss="modal">Theme 1</button> </div> 
-                <div class="col-6"> <button class="btn btn-success w-100 theme-btn" data-theme="neon" data-bs-dismiss="modal">Theme 2</button> </div> 
-                <div class="col-6"> <button class="btn btn-warning w-100 theme-btn" data-theme="retro" data-bs-dismiss="modal">Theme 3</button> </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </header>
-    <main>
-      <p>Main content goes here. Snake game.</p>
+    <!-- Main Content -->
+    <main class="flex-grow-1">
+        <p>Main content goes here. Snake game.</p>
     </main>
+    <!-- Footer -->
+    <footer class=" mt-auto bg-dark text-light py-4">
+        <div class="container">
+            <!-- ARROW KEYS PANEL -->
+            <div id="keyboardPanel" class="collapse mb-4">
+                <div class="d-flex justify-content-end">
+                    <div class="d-flex flex-column align-items-center me-3">
+                        <div class="btn-group mb-2"> <button class="btn btn-secondary arrow-btn"
+                                data-key="ArrowUp">▲</button> </div>
+                        <div class="btn-group"> <button class="btn btn-secondary arrow-btn"
+                                data-key="ArrowLeft">◀</button> <button class="btn btn-secondary arrow-btn"
+                                data-key="ArrowDown">▼</button> <button class="btn btn-secondary arrow-btn"
+                                data-key="ArrowRight">▶</button> </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer Paragraph-->
+            <div class="project-description text-center mb-4">
+                <p class="mb-1"> This project is a modern recreation of the classic Snake game, built for learning and
+                    experimentation. </p>
+                <p class="mb-1"> Below you will see each person who collaborated on this project, and a link to their Github.</p>
+                <p class="small text-muted"> This version is created solely for educational purposes and is not
+                    affiliated with or endorsed by the original creators. </p>
+            </div>
+            <!-- TEAM CARDS -->
+            <div class="row g-3">
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="card h-100 text-center"> <img src="your-image.jpg" class="card-img-top"
+                            alt="Team Member">
+                        <div class="card-body">
+                            <h6 class="card-title">Name Here</h6> <a href="https://github.com/username" target="_blank"
+                                class="btn btn-sm btn-dark"> GitHub </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="card h-100 text-center"> <img src="your-image.jpg" class="card-img-top"
+                            alt="Team Member">
+                        <div class="card-body">
+                            <h6 class="card-title">Name Here</h6> <a href="https://github.com/username" target="_blank"
+                                class="btn btn-sm btn-dark"> GitHub </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="card h-100 text-center"> <img src="your-image.jpg" class="card-img-top"
+                            alt="Team Member">
+                        <div class="card-body">
+                            <h6 class="card-title">Name Here</h6> <a href="https://github.com/username" target="_blank"
+                                class="btn btn-sm btn-dark"> GitHub </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="card h-100 text-center"> <img src="your-image.jpg" class="card-img-top"
+                            alt="Team Member">
+                        <div class="card-body">
+                            <h6 class="card-title">Name Here</h6> <a href="https://github.com/username" target="_blank"
+                                class="btn btn-sm btn-dark"> GitHub </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-4 col-lg-2">
+                    <div class="card h-100 text-center"> <img src="your-image.jpg" class="card-img-top"
+                            alt="Team Member">
+                        <div class="card-body">
+                            <h6 class="card-title">Name Here</h6> <a href="https://github.com/username" target="_blank"
+                                class="btn btn-sm btn-dark"> GitHub </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
     <!-- Bootstrap JavaScript -->
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <!-- JavaScript for keyboard panel collapse -->
+    <script>
+        const keyboardBtn = document.querySelector(`[data-bs-target="#keyboardPanel"]`);
+        const navbarCollapse = document.getElementById(`navbarButtons`);
+
+        keyboardBtn.addEventListener(`click`, () => {
+            const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse)
+                || new bootstrap.Collapse(navbarCollapse, { toggle: false });
+
+            bsCollapse.hide();
+        });
+    </script>
+</body>
+
 </html>
