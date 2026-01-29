@@ -1,6 +1,8 @@
+
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
 
+/* CSS Variables for Theming */
 :root {
   --ui-bg: #edf5f2; 
   --ui-border: #d5e0dc;
@@ -16,3 +18,5 @@ body {
   color: var(--ui-text);
   font-family: var(--main-font);
 }
+
+/* Navigation */
