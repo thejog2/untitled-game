@@ -1,0 +1,23 @@
+body {
+  font-family: system-ui, sans-serif;
+  background: #111;
+  color: #eee;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 20px;
+}
+
+.hud {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 10px;
+}
+
+canvas {
+  background: #222;
+  border: 2px solid #555;
+  box-shadow: 0 0 20px #000;
+}
