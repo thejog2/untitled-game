@@ -61,7 +61,7 @@ body {
 /* Main Content */
 
 /* Footer */
-.footer {
+footer {
   background-color: var(--ui-accent);
   color: var(--ui-bg);
   padding: 15px 0;
