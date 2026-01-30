@@ -34,7 +34,7 @@ const themes = {
     desert: {
         backgroundColor: "#FFDC00",
         snakeheadColor: "#4A3728#",
-        snakeColor: "#FF851B",
+        snakeColor: "#7D5C3E",
         foodFreshColor: "#FF4136",  
         foodSpoiledColor: "#B10DC9",
 },
