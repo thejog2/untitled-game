@@ -80,6 +80,24 @@ body {
   max-height: 600px;
 }
 
+/* Background wrapper behind the game, sits below navbar and above footer */
+.game-bg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+  background-image: url("../images/background.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+/* ensure the game canvas sits above the background image */
+#game-container {
+  position: relative;
+  z-index: 1;
+}
+
 #game-grid {
   display: grid;
   grid-template-columns: repeat(20, 1fr);
