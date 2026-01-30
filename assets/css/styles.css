@@ -122,6 +122,8 @@ footer {
 display: flex;
 justify-content: center;
 align-items: center;
+}
+
 /* Media Queries */
 
 @media (max-width: 768px) {
