@@ -7,8 +7,8 @@
   --ui-border: #d5e0dc;
   --ui-text: #1e1e1e;
   --ui-text-muted: #555555;
-  --ui-accent: #4a8f8a;
-  --main-font: "Syne Mono", Sans-Serif;
+  --ui-accent: #042607;
+  --main-font: 'Syne Mono', Sans-Serif;
   --second-font: Monospace, Sans-Serif;
 }
 
@@ -18,12 +18,14 @@ body {
   font-family: var(--main-font);
 }
 
+
 /* Navigation */
 
 .navbar {
   background-color: var(--ui-accent) !important;
   border-bottom: 2px solid var(--ui-border);
 }
+
 /* Logo Animation */
 
 .animated-logo {
@@ -59,11 +61,13 @@ body {
 }
 
 .animated-logo:hover {
-  transform: scale(1.08) rotate(-2deg);
+  transform: scale(1.08) rotate(-10deg) ;
   transition: transform 0.2s ease;
 }
 
 /* Main Content */
+
+
 
 /* Game Container */
 #game-container {
@@ -113,6 +117,11 @@ footer {
   border-top: 2px solid var(--ui-border);
 }
 
+/*To make teams align centre*/
+.teams {
+display: flex;
+justify-content: center;
+align-items: center;
 /* Media Queries */
 
 @media (max-width: 768px) {
