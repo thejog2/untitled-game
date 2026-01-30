@@ -95,6 +95,12 @@ function resetGame() {
 
 // shared direction handler used by keyboard and on-screen buttons
 function setDirectionFromKey(key) {
+
+    // Prevent arrow key movement when game is active. Stop browser scrolling.
+    if (gameStarted && ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
+        e.preventDefault();
+    }
+    
     if (gameOver && (key === "Enter" || key === " ")) {
         resetGame();
         return;
