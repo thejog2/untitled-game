@@ -90,26 +90,51 @@ function resetGame() {
     resetFood();
 }
 
-document.addEventListener("keydown", (e) => {
-    if (gameOver && (e.key === "Enter" || e.key === " ")) {
+// shared direction handler used by keyboard and on-screen buttons
+function setDirectionFromKey(key) {
+    if (gameOver && (key === "Enter" || key === " ")) {
         resetGame();
         return;
     }
 
     // prevent reversing directly
-    if ((e.key === "ArrowLeft" || e.key === "a") && snake.dx !== 1) {
+    if ((key === "ArrowLeft" || key === "a") && snake.dx !== 1) {
         snake.dx = -1;
         snake.dy = 0;
-    } else if ((e.key === "ArrowRight" || e.key === "d") && snake.dx !== -1) {
+    } else if ((key === "ArrowRight" || key === "d") && snake.dx !== -1) {
         snake.dx = 1;
         snake.dy = 0;
-    } else if ((e.key === "ArrowUp" || e.key === "w") && snake.dy !== 1) {
+    } else if ((key === "ArrowUp" || key === "w") && snake.dy !== 1) {
         snake.dx = 0;
         snake.dy = -1;
-    } else if ((e.key === "ArrowDown" || e.key === "s") && snake.dy !== -1) {
+    } else if ((key === "ArrowDown" || key === "s") && snake.dy !== -1) {
         snake.dx = 0;
         snake.dy = 1;
     }
+}
+
+// keyboard input delegates to the shared handler
+document.addEventListener("keydown", (e) => {
+    setDirectionFromKey(e.key);
+});
+
+// wire on-screen arrow buttons (for mobile/tablet)
+window.addEventListener('load', () => {
+    const arrowButtons = document.querySelectorAll('.arrow-btn');
+    arrowButtons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const key = btn.dataset.key;
+            setDirectionFromKey(key);
+        });
+        // also support touchstart for better mobile responsiveness
+        btn.addEventListener('touchstart', (ev) => {
+            ev.preventDefault();
+            const key = btn.dataset.key;
+            setDirectionFromKey(key);
+        }, { passive: false });
+    });
+    // expose for debugging if needed
+    window.setDirectionFromKey = setDirectionFromKey;
 });
 
 function loop() {
