@@ -1,3 +1,6 @@
+// Game Speed
+let speed = 12; //Default speed
+
 // setting up the game,canvas height and width to be 400 css pixels rendered in 2d //
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
@@ -115,7 +118,7 @@ function loop() {
     if (gameOver) return;
 
     // slow down game
-    if (++frameCount < 6) return;
+    if (++frameCount < speed) return; 
     frameCount = 0;
 
     ctx.fillStyle = currentTheme.backgroundColor;
