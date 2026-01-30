@@ -7,8 +7,6 @@
   background-position: center;  /* keeps it centered */
   background-repeat: no-repeat;
 
-  padding: 80px 0;              /* creates space so it doesn’t overlap footer */
-  /* OR use a fixed height instead: height: 300px; */
 }
 
 
