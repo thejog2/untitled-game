@@ -88,3 +88,19 @@ footer {
   text-align: center;
   border-top: 2px solid var(--ui-border);
 }
+
+/* Media Queries */
+
+@media (max-width: 768px) {  /* Tablets */
+  #game-container { /* Prevents the grid overwhelming medium screens */
+    width: 80vmin;
+    height: 80vmin;
+  }
+}
+
+@media (max-width: 480px) { /* Mobile Phones */
+  #game-container { /* Prevents the grid overwhelming small screens */
+    width: 70vmin;
+    height: 70vmin;
+  }
+}
