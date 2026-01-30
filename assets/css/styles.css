@@ -60,6 +60,26 @@ body {
 
 /* Main Content */
 
+#game-container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vmin;
+  height: 90vmin;
+  max-width: 600px;
+  max-height: 600px;
+}
+
+#game-grid {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  width: 100%;
+  height: 100%;
+  background: #111;
+  border: 4px solid #333;
+}
+
 /* Footer */
 footer {
   background-color: var(--ui-accent);
