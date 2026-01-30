@@ -95,8 +95,16 @@
             </div>
     </header>
     <!-- Main Content -->
-    <main class="flex-grow-1">
-        <p>Main content goes here. Snake game.</p>
+    <main class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
+        <div id="game-container">
+            <canvas id="game" width="400" height="400"></canvas>
+        </div>
+
+    <!-- Score + Stauts -->
+        <div id="game-info" class="text-center mt-3">
+            <div id="score" class="fs-4 fw-bold">0</div>
+            <div id="status" class="small text-muted">Playing</div>
+        </div>
     </main>
     <!-- Footer -->
     <footer class="mt-auto text-light py-4">
@@ -188,6 +196,8 @@
             bsCollapse.hide();
         });
     </script>
+    <!-- Custom Game JavaScript -->
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

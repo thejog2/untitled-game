@@ -1,15 +1,14 @@
-
 /* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap");
 
 /* CSS Variables for Theming */
 :root {
-  --ui-bg: #edf5f2; 
+  --ui-bg: #edf5f2;
   --ui-border: #d5e0dc;
   --ui-text: #1e1e1e;
   --ui-text-muted: #555555;
   --ui-accent: #4a8f8a;
-  --main-font: 'Syne Mono', Sans-Serif;
+  --main-font: "Syne Mono", Sans-Serif;
   --second-font: Monospace, Sans-Serif;
 }
 
@@ -32,9 +31,15 @@ body {
 }
 
 @keyframes float {
-  0%   { transform: translateY(0); }
-  50%  { transform: translateY(-8px); }
-  100% { transform: translateY(0); }
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .animated-logo {
@@ -60,6 +65,45 @@ body {
 
 /* Main Content */
 
+/* Game Container */
+#game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90vmin;
+  height: 90vmin;
+  max-width: 600px;
+  max-height: 600px;
+}
+
+#game-grid {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  width: 100%;
+  height: 100%;
+  background: #111;
+  border: 4px solid #333;
+}
+
+#game {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  background: #000;
+  border: 4px solid #333;
+}
+
+#game-info {
+  width: 100%;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#status {
+  min-height: 1.2rem; /* Ensures space for status messages */
+}
+
 /* Footer */
 footer {
   background-color: var(--ui-accent);
@@ -67,4 +111,24 @@ footer {
   padding: 15px 0;
   text-align: center;
   border-top: 2px solid var(--ui-border);
+}
+
+/* Media Queries */
+
+@media (max-width: 768px) {
+  /* Tablets */
+  #game-container {
+    /* Prevents the grid overwhelming medium screens */
+    width: 80vmin;
+    height: 80vmin;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Mobile Phones */
+  #game-container {
+    /* Prevents the grid overwhelming small screens */
+    width: 70vmin;
+    height: 70vmin;
+  }
 }
