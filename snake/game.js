@@ -11,6 +11,35 @@ const statusEl = document.getElementById("status");
 const grid = 20;
 const tileCount = canvas.width / grid;
 
+// Defining themes
+
+/* Configure Themes */
+
+const themes = {
+    default: {
+        backgroundColor: "#000000",
+        snakeColor: "#2ecc40",
+        foodFreshColor: "#ff4136",
+        foodSpoiledColor: "#b300ff",
+    },
+    underwater: {
+        backgroundColor: "#001f3f",
+        snakeColor: "#0074D9",
+        foodFreshColor: "#7FDBFF",
+        foodSpoiledColor: "#39CCCC",
+    },
+};
+// define current theme, starts as default
+let currentTheme = themes.default;
+
+// Function for switching themes
+
+function setTheme(name) {
+    if (themes[name]) {
+        currentTheme = themes[name];
+    }
+}
+
 //  setting up the snake position and movement variables
 let snake = {
     x: 10,
@@ -89,7 +118,8 @@ function loop() {
     if (++frameCount < 6) return;
     frameCount = 0;
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = currentTheme.backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     // move snake
     snake.x += snake.dx;
@@ -122,11 +152,24 @@ function loop() {
     }
 
     // draw food
-    ctx.fillStyle = food.spoiled ? "#b300ff" : "#ff4136";
-    ctx.fillRect(food.x * grid, food.y * grid, grid - 1, grid - 1);
+    if (currentTheme.foodImage) {
+        ctx.drawImage(
+            currentTheme.foodImage,
+            food.x * grid,
+            food.y * grid,
+            grid - 1,
+            grid - 1,
+        );
+    } else {
+        ctx.fillStyle = food.spoiled
+            ? currentTheme.foodSpoiledColor
+            : currentTheme.foodFreshColor;
+
+        ctx.fillRect(food.x * grid, food.y * grid, grid - 1, grid - 1);
+    }
 
     // draw snake
-    ctx.fillStyle = "#2ecc40";
+    ctx.fillStyle = currentTheme.snakeColor;
     snake.cells.forEach((cell, index) => {
         ctx.fillRect(cell.x * grid, cell.y * grid, grid - 1, grid - 1);
 
@@ -158,5 +201,6 @@ function loop() {
     });
 }
 
+console.log("Current theme:", currentTheme);
 resetGame();
 requestAnimationFrame(loop);
