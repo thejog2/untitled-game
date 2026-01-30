@@ -1,6 +1,18 @@
 /* Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap");
 
+.background-bg {
+  background-image: url("./assets/images/background.png");
+  background-size: cover;       /* makes it fill the section */
+  background-position: center;  /* keeps it centered */
+  background-repeat: no-repeat;
+
+  padding: 80px 0;              /* creates space so it doesn’t overlap footer */
+  /* OR use a fixed height instead: height: 300px; */
+}
+
+
+
 /* CSS Variables for Theming */
 :root {
   --ui-bg: #edf5f2;
