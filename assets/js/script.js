@@ -31,7 +31,24 @@ const themes = {
         foodFreshColor: "#7FDBFF",
         foodSpoiledColor: "#39CCCC",
     },
-};
+    desert: {
+        backgroundColor: "#FFDC00",
+        snakeheadColor: "#4A3728#",
+        snakeColor: "#FF851B",
+        foodFreshColor: "#FF4136",  
+        foodSpoiledColor: "#B10DC9",
+},
+
+    sky: {
+        backgroundColor: "#87CEEB",
+        snakeheadColor: "#0fc8c2",
+        snakeColor: "#FFFFFF",
+        foodFreshColor: "#FFD700",
+        foodSpoiledColor: "#FF4500",
+    },
+
+
+}
 // define current theme, starts as default
 let currentTheme = themes.default;
 
