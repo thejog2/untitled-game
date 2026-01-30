@@ -1,0 +1,70 @@
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
+
+/* CSS Variables for Theming */
+:root {
+  --ui-bg: #edf5f2; 
+  --ui-border: #d5e0dc;
+  --ui-text: #1e1e1e;
+  --ui-text-muted: #555555;
+  --ui-accent: #4a8f8a;
+  --main-font: 'Syne Mono', Sans-Serif;
+  --second-font: Monospace, Sans-Serif;
+}
+
+body {
+  background: var(--ui-bg);
+  color: var(--ui-text);
+  font-family: var(--main-font);
+}
+
+/* Navigation */
+
+.navbar {
+  background-color: var(--ui-accent) !important;
+  border-bottom: 2px solid var(--ui-border);
+}
+/* Logo Animation */
+
+.animated-logo {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+
+.animated-logo {
+  animation: glow 2.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0 0 6px rgba(0, 255, 0, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(0, 255, 0, 0.7));
+  }
+  100% {
+    filter: drop-shadow(0 0 6px rgba(0, 255, 0, 0.3));
+  }
+}
+
+.animated-logo:hover {
+  transform: scale(1.08) rotate(-2deg);
+  transition: transform 0.2s ease;
+}
+
+/* Main Content */
+
+/* Footer */
+footer {
+  background-color: var(--ui-accent);
+  color: var(--ui-bg);
+  padding: 15px 0;
+  text-align: center;
+  border-top: 2px solid var(--ui-border);
+}
