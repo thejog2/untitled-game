@@ -1,6 +1,9 @@
 // Game Speed
 let speed = 12; //Default speed
 
+// Stops the game from starting automatically
+let gameStarted = false;
+
 // setting up the game,canvas height and width to be 400 css pixels rendered in 2d //
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
@@ -140,6 +143,7 @@ window.addEventListener('load', () => {
 function loop() {
     requestAnimationFrame(loop);
 
+    if (!gameStarted) return; // Stop everything until the game is started
     if (gameOver) return;
 
     // slow down game
@@ -232,3 +236,9 @@ function loop() {
 console.log("Current theme:", currentTheme);
 resetGame();
 requestAnimationFrame(loop);
+
+document.getElementById("play-btn").addEventListener("click", () => {
+    document.getElementById("game-overlay").classList.add("hidden");
+    gameStarted = true;
+    resetGame();
+});

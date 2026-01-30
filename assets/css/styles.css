@@ -71,6 +71,7 @@ body {
 
 /* Game Container */
 #game-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,6 +79,20 @@ body {
   height: 90vmin;
   max-width: 600px;
   max-height: 600px;
+}
+
+#game-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#game-overlay.hidden {
+  display: none;
 }
 
 #game-grid {
