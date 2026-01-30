@@ -96,16 +96,6 @@ function resetGame() {
 // shared direction handler used by keyboard and on-screen buttons
 function setDirectionFromKey(key) {
 
-    // Prevent arrow key movement when game is active. Stop browser scrolling.
-    if (gameStarted && ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) {
-        e.preventDefault();
-    }
-    
-    if (gameOver && (key === "Enter" || key === " ")) {
-        resetGame();
-        return;
-    }
-
     // prevent reversing directly
     if ((key === "ArrowLeft" || key === "a") && snake.dx !== 1) {
         snake.dx = -1;
@@ -124,6 +114,20 @@ function setDirectionFromKey(key) {
 
 // keyboard input delegates to the shared handler
 document.addEventListener("keydown", (e) => {
+    
+    // Prevent default behavior for arrow keys (scrolling)
+    const scrollKeys = ["ArrowUp", "ArrowDown", " "];
+    if (gameStarted && scrollKeys.includes(e.key)) {
+        e.preventDefault();
+    }
+
+    // Restart Logic
+    if (gameOver && (e.key === "Enter" || e.key === " ")) {
+        resetGame();
+        return;
+    }
+
+    // Pass the key to the shared direction handler
     setDirectionFromKey(e.key);
 });
 
