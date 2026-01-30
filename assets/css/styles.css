@@ -78,6 +78,7 @@ body {
   height: 90vmin;
   max-width: 600px;
   max-height: 600px;
+  margin-top: 50px;
 }
 
 #game-grid {
