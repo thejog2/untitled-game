@@ -39,6 +39,13 @@ const themes = {
         foodSpoiledColor: "#B10DC9",
 },
 
+     Jungle: {
+        backgroundColor: "#1A472A",
+        snakeColor: "#32CD32",
+        foodFreshColor: "#FFA8A8",  
+        foodSpoiledColor: "#8B4513",
+},
+
     sky: {
         backgroundColor: "#87CEEB",
         snakeheadColor: "#0fc8c2",
@@ -46,7 +53,6 @@ const themes = {
         foodFreshColor: "#FFD700",
         foodSpoiledColor: "#FF4500",
     },
-
 
 }
 // define current theme, starts as default
