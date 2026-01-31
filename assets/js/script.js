@@ -39,8 +39,9 @@ const themes = {
         foodSpoiledColor: "#B10DC9",
 },
 
-     Jungle: {
+     jungle: {
         backgroundColor: "#1A472A",
+        snakeheadColor: "#006400",
         snakeColor: "#32CD32",
         foodFreshColor: "#FFA8A8",  
         foodSpoiledColor: "#8B4513",
