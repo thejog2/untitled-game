@@ -43,7 +43,7 @@ const themes = {
         backgroundColor: "#1A472A",
         snakeheadColor: "#006400",
         snakeColor: "#32CD32",
-        foodFreshColor: "#FFA8A8",  
+        foodFreshColor: "#FF6B6B",  
         foodSpoiledColor: "#8B4513",
 },
 
