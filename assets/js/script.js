@@ -37,16 +37,16 @@ const themes = {
     desert: {
         backgroundColor: "#FFDC00",
         snakeColor: "#7D5C3E",
-        foodFreshColor: "#FF4136",  
+        foodFreshColor: "#FF4136",
         foodSpoiledColor: "#B10DC9",
-},
+    },
 
-     jungle: {
+    jungle: {
         backgroundColor: "#1A472A",
         snakeColor: "#32CD32",
-        foodFreshColor: "#FF6B6B",  
+        foodFreshColor: "#FF6B6B",
         foodSpoiledColor: "#8B4513",
-},
+    },
 
     sky: {
         backgroundColor: "#87CEEB",
@@ -54,18 +54,9 @@ const themes = {
         foodFreshColor: "#FFD700",
         foodSpoiledColor: "#FF4500",
     },
-
-}
+};
 // define current theme, starts as default
 let currentTheme = themes.default;
-
-// Function for switching themes
-
-function setTheme(name) {
-    if (themes[name]) {
-        currentTheme = themes[name];
-    }
-}
 
 //  setting up the snake position and movement variables
 let snake = {
@@ -110,13 +101,24 @@ function resetGame() {
     score = 0;
     scoreEl.textContent = score;
     gameOver = false;
+    gameStarted = false;
+    frameCount = 0;
     statusEl.textContent = "Playing";
     resetFood();
+    ctx.fillStyle = currentTheme.backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+function endGame() {
+    gameOver = true;
+    const overlay = document.getElementById("game-overlay");
+    const playBtn = document.getElementById("play-btn");
+    playBtn.textContent = "Restart";
+    overlay.classList.remove("hidden");
 }
 
 // shared direction handler used by keyboard and on-screen buttons
 function setDirectionFromKey(key) {
-
     // prevent reversing directly
     if ((key === "ArrowLeft" || key === "a") && snake.dx !== 1) {
         snake.dx = -1;
@@ -135,7 +137,6 @@ function setDirectionFromKey(key) {
 
 // keyboard input delegates to the shared handler
 document.addEventListener("keydown", (e) => {
-    
     // Prevent default behavior for arrow keys (scrolling)
     const scrollKeys = ["ArrowUp", "ArrowDown", " "];
     if (gameStarted && scrollKeys.includes(e.key)) {
@@ -152,33 +153,70 @@ document.addEventListener("keydown", (e) => {
     setDirectionFromKey(e.key);
 });
 
-document.addEventListener("keydown", () => {
-    eatSound.play().then(() => {
-        eatSound.pause();
-        eatSound.currentTime = 0;
-    });
-}, { once: true });
-
-
+document.addEventListener(
+    "keydown",
+    () => {
+        eatSound.play().then(() => {
+            eatSound.pause();
+            eatSound.currentTime = 0;
+        });
+    },
+    { once: true },
+);
 
 // wire on-screen arrow buttons (for mobile/tablet)
-window.addEventListener('load', () => {
-    const arrowButtons = document.querySelectorAll('.arrow-btn');
+window.addEventListener("load", () => {
+    const arrowButtons = document.querySelectorAll(".arrow-btn");
     arrowButtons.forEach((btn) => {
-        btn.addEventListener('click', () => {
+        btn.addEventListener("click", () => {
             const key = btn.dataset.key;
             setDirectionFromKey(key);
         });
         // also support touchstart for better mobile responsiveness
-        btn.addEventListener('touchstart', (ev) => {
-            ev.preventDefault();
-            const key = btn.dataset.key;
-            setDirectionFromKey(key);
-        }, { passive: false });
+        btn.addEventListener(
+            "touchstart",
+            (ev) => {
+                ev.preventDefault();
+                const key = btn.dataset.key;
+                setDirectionFromKey(key);
+            },
+            { passive: false },
+        );
     });
     // expose for debugging if needed
     window.setDirectionFromKey = setDirectionFromKey;
 });
+
+function setTheme(name) {
+    if (themes[name]) {
+        currentTheme = themes[name];
+
+        // Immediately update canvas background
+        ctx.fillStyle = currentTheme.backgroundColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Optional: draw preview if game isn't running
+        if (!gameStarted && !gameOver) {
+            drawPreview();
+        }
+    }
+}
+
+function drawPreview() {
+    // background 
+    ctx.fillStyle = currentTheme.backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // snake preview 
+    ctx.fillStyle = currentTheme.snakeColor;
+    ctx.fillRect(8 * grid, 10 * grid, grid - 1, grid - 1);
+    ctx.fillRect(9 * grid, 10 * grid, grid - 1, grid - 1);
+    ctx.fillRect(10 * grid, 10 * grid, grid - 1, grid - 1);
+
+    // food preview 
+    ctx.fillStyle = currentTheme.foodFreshColor;
+    ctx.fillRect(12 * grid, 10 * grid, grid - 1, grid - 1);
+}
 
 function loop() {
     requestAnimationFrame(loop);
@@ -187,9 +225,10 @@ function loop() {
     if (gameOver) return;
 
     // slow down game
-    if (++frameCount < speed) return; 
+    if (++frameCount < speed) return;
     frameCount = 0;
 
+    // CLEAR CANVAS EVERY FRAME 
     ctx.fillStyle = currentTheme.backgroundColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -204,8 +243,8 @@ function loop() {
         snake.y < 0 ||
         snake.y >= tileCount
     ) {
-        statusEl.textContent = "Game Over (wall). Press Enter.";
-        gameOver = true;
+        statusEl.textContent = "Game Over (wall).";
+        endGame();
         return;
     }
 
@@ -266,8 +305,8 @@ function loop() {
         // self collision
         for (let i = index + 1; i < snake.cells.length; i++) {
             if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-                statusEl.textContent = "Game Over (self). Press Enter.";
-                gameOver = true;
+                statusEl.textContent = "Game Over (self).";
+                endGame();
                 return;
             }
         }
@@ -283,11 +322,22 @@ requestAnimationFrame(loop);
 const eatSound = new Audio("sounds/impactGeneric_light_002.ogg");
 
 function playEatSound() {
-  eatSound.currentTime = 0;
-  eatSound.play();
+    eatSound.currentTime = 0;
+    eatSound.play();
 }
+
 document.getElementById("play-btn").addEventListener("click", () => {
-    document.getElementById("game-overlay").classList.add("hidden");
-    gameStarted = true;
+    // Always reset the game
     resetGame();
+
+    // Mark game as running
+    gameStarted = true;
+    gameOver = false;
+
+    // Hide overlay 
+    document.getElementById("game-overlay").classList.add("hidden");
+
+    // Clear preview immediately
+    ctx.fillStyle = currentTheme.backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 });
