@@ -3,8 +3,10 @@
 
 .background-bg {
   background-image: url("./assets/images/background.png");
-  background-size: cover;       /* makes it fill the section */
-  background-position: center;  /* keeps it centered */
+  background-size: cover;
+  /* makes it fill the section */
+  background-position: center;
+  /* keeps it centered */
   background-repeat: no-repeat;
 
 }
@@ -45,9 +47,11 @@ body {
   0% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
+
   100% {
     transform: translateY(0);
   }
@@ -61,16 +65,18 @@ body {
   0% {
     filter: drop-shadow(0 0 6px rgba(0, 255, 0, 0.3));
   }
+
   50% {
     filter: drop-shadow(0 0 16px rgba(0, 255, 0, 0.7));
   }
+
   100% {
     filter: drop-shadow(0 0 6px rgba(0, 255, 0, 0.3));
   }
 }
 
 .animated-logo:hover {
-  transform: scale(1.08) rotate(-10deg) ;
+  transform: scale(1.08) rotate(-10deg);
   transition: transform 0.2s ease;
 }
 
@@ -84,12 +90,13 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 90vmin;
-  height: 90vmin;
-  max-width: 600px;
-  max-height: 600px;
+  width: min(90vmin, 550px);
+  height: min(90vmin, 550px);
+  z-index: 1;
+  /* merge both definitions */
 }
 
+/* Overlay */
 #game-overlay {
   position: absolute;
   inset: 0;
@@ -102,7 +109,9 @@ body {
 
 #game-overlay.hidden {
   display: none;
-/* Background wrapper behind the game, sits below navbar and above footer */
+}
+
+/* Background wrapper */
 .game-bg {
   width: 100%;
   display: flex;
@@ -114,22 +123,7 @@ body {
   background-repeat: no-repeat;
 }
 
-/* ensure the game canvas sits above the background image */
-#game-container {
-  position: relative;
-  z-index: 1;
-}
-
-#game-grid {
-  display: grid;
-  grid-template-columns: repeat(20, 1fr);
-  grid-template-rows: repeat(20, 1fr);
-  width: 100%;
-  height: 100%;
-  background: #111;
-  border: 4px solid #333;
-}
-
+/* Canvas */
 #game {
   width: 100%;
   height: 100%;
@@ -138,6 +132,7 @@ body {
   border: 4px solid #333;
 }
 
+/* Score + Status */
 #game-info {
   width: 100%;
   text-align: center;
@@ -145,7 +140,7 @@ body {
 }
 
 #status {
-  min-height: 1.2rem; /* Ensures space for status messages */
+  min-height: 1.2rem;
 }
 
 /* Footer */
@@ -159,13 +154,15 @@ footer {
 
 /*To make teams align centre*/
 .teams {
-display: flex;
-justify-content: center;
-align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 /* Media Queries */
 
 @media (max-width: 768px) {
+
   /* Tablets */
   #game-container {
     /* Prevents the grid overwhelming medium screens */
@@ -175,11 +172,11 @@ align-items: center;
 }
 
 @media (max-width: 480px) {
+
   /* Mobile Phones */
   #game-container {
     /* Prevents the grid overwhelming small screens */
     width: 70vmin;
     height: 70vmin;
   }
-}
 }
