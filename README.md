@@ -1,4 +1,4 @@
-﻿# untitled-game
+## Snake Game
 # Work in Progress - Snake
 
 ## Introduction to Project
@@ -34,7 +34,7 @@ Instructions on playing the game
 A control system (cursor keys) which are available on every platform
 
 Should Have
-The ability to display themes which will enhance users experience
+The ability to display themes which will enhance users' experience
 
 Could Have
 The ability to change difficulty within the game
@@ -64,6 +64,27 @@ High score area
 - Deployed via GitHub pages (Cloud deployment).
 **Live Site:**  
 https://thejog2.github.io/snake-game/
+<br>
+<br>
+
+### Screenshots and Descriptions
+- Screenshot 1: *Game Start page*
+Description: The start page features the default theme, instructions, and options to change themes.
+User Value: The user can easily navigate through different themes and view instructions. The arrow keys allow for accessibility for users on a touchscreen device. 
+
+<img width="1680" height="1026" alt="snake-game-start" src="https://github.com/user-attachments/assets/6a230c2d-8850-49e0-9938-deb481eb3e77" />
+
+<br><br>
+
+
+- Screenshot 2: *Lighthouse*
+Description: Screenshot of the report for the devtool; Lighthouse report. 
+User Value: The user can experience and enjoy the game with no bugs or delays. Elements are clearly displayed and accessible to all user types. 
+![lighthouse-report](https://github.com/user-attachments/assets/73869de1-9575-48a6-9d08-2846889600c5)
+
+<br>
+<br>
+
 
 
 ### Code Validation, checks and tests.
@@ -76,16 +97,17 @@ https://thejog2.github.io/snake-game/
 - Adaptable layout for desktop, tablet, and mobile.
 - Canvas and controls remain usable at all breakpoints and on all devices.
 
-
+<br>
+<br>
 
 ### USE OF AI
-
 1. Snake logo generated using AI
 2. The basic structure of the game was generated using Co-Pilot
 3. A background image was generated using AI
 4. Modification of the team members' photographs.
 5. Use of AI to help with git pull and merge issues encountered.
 6. During the design process, AI has been used by each team member either to debug code or generate code.
+
 
 
 
