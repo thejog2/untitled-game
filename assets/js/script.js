@@ -58,14 +58,6 @@ const themes = {
 // define current theme, starts as default
 let currentTheme = themes.default;
 
-// Function for switching themes
-
-function setTheme(name) {
-    if (themes[name]) {
-        currentTheme = themes[name];
-    }
-}
-
 //  setting up the snake position and movement variables
 let snake = {
     x: 10,
@@ -109,8 +101,12 @@ function resetGame() {
     score = 0;
     scoreEl.textContent = score;
     gameOver = false;
+    gameStarted = false;
+    frameCount = 0;
     statusEl.textContent = "Playing";
     resetFood();
+    ctx.fillStyle = currentTheme.backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function endGame() {
@@ -191,6 +187,37 @@ window.addEventListener("load", () => {
     window.setDirectionFromKey = setDirectionFromKey;
 });
 
+function setTheme(name) {
+    if (themes[name]) {
+        currentTheme = themes[name];
+
+        // Immediately update canvas background
+        ctx.fillStyle = currentTheme.backgroundColor;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Optional: draw preview if game isn't running
+        if (!gameStarted && !gameOver) {
+            drawPreview();
+        }
+    }
+}
+
+function drawPreview() {
+    // background 
+    ctx.fillStyle = currentTheme.backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // snake preview 
+    ctx.fillStyle = currentTheme.snakeColor;
+    ctx.fillRect(8 * grid, 10 * grid, grid - 1, grid - 1);
+    ctx.fillRect(9 * grid, 10 * grid, grid - 1, grid - 1);
+    ctx.fillRect(10 * grid, 10 * grid, grid - 1, grid - 1);
+
+    // food preview 
+    ctx.fillStyle = currentTheme.foodFreshColor;
+    ctx.fillRect(12 * grid, 10 * grid, grid - 1, grid - 1);
+}
+
 function loop() {
     requestAnimationFrame(loop);
 
@@ -201,6 +228,7 @@ function loop() {
     if (++frameCount < speed) return;
     frameCount = 0;
 
+    // CLEAR CANVAS EVERY FRAME 
     ctx.fillStyle = currentTheme.backgroundColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -299,10 +327,17 @@ function playEatSound() {
 }
 
 document.getElementById("play-btn").addEventListener("click", () => {
-    // Start or restart the game
+    // Always reset the game
     resetGame();
-    gameStarted = true;
 
-    // hide overlay 
+    // Mark game as running
+    gameStarted = true;
+    gameOver = false;
+
+    // Hide overlay 
     document.getElementById("game-overlay").classList.add("hidden");
+
+    // Clear preview immediately
+    ctx.fillStyle = currentTheme.backgroundColor;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 });
