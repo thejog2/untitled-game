@@ -58,6 +58,40 @@ const themes = {
 // define current theme, starts as default
 let currentTheme = themes.default;
 
+
+//sounds
+
+const bgMusic = new Audio("sounds/game-bg.mp3");
+bgMusic.loop = true;
+bgMusic.volume = 0.1;
+
+const eatSound = new Audio("sounds/impactGeneric_light_002.ogg");
+
+function playEatSound() {
+  eatSound.currentTime = 0;
+  eatSound.play();
+}
+document.getElementById("play-btn").addEventListener("click", () => {
+    document.getElementById("game-overlay").classList.add("hidden");
+    gameStarted = true;
+    resetGame();
+});
+
+const wallSound = new Audio("sounds/jingles_HIT16.ogg");
+const selfSound = new Audio("sounds/jingles_HIT09.ogg");
+
+function playWallSound() {
+  wallSound.currentTime = 0;
+  wallSound.play();
+}
+
+function playSelfSound() {
+  selfSound.currentTime = 0;
+  selfSound.play();
+}
+
+
+
 //  setting up the snake position and movement variables
 let snake = {
     x: 10,
@@ -105,6 +139,9 @@ function resetGame() {
     frameCount = 0;
     statusEl.textContent = "Playing";
     resetFood();
+    bgMusic.currentTime = 0;
+    bgMusic.play();
+
     ctx.fillStyle = currentTheme.backgroundColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
@@ -119,6 +156,7 @@ function endGame() {
 
 // shared direction handler used by keyboard and on-screen buttons
 function setDirectionFromKey(key) {
+
     // prevent reversing directly
     if ((key === "ArrowLeft" || key === "a") && snake.dx !== 1) {
         snake.dx = -1;
@@ -148,6 +186,21 @@ document.addEventListener("keydown", (e) => {
         resetGame();
         return;
     }
+
+    // Pass the key to the shared direction handler
+    setDirectionFromKey(e.key);
+});
+
+document.addEventListener("keydown", () => {
+    [eatSound, wallSound, selfSound].forEach(sound => {
+        sound.play().then(() => {
+            sound.pause();
+            sound.currentTime = 0;
+        });
+    });
+
+    bgMusic.play(); // start music ONCE
+}, { once: true });
 
     // Pass the key to the shared direction handler
     setDirectionFromKey(e.key);
@@ -243,7 +296,9 @@ function loop() {
         snake.y < 0 ||
         snake.y >= tileCount
     ) {
-        statusEl.textContent = "Game Over (wall).";
+       playWallSound(); 
+       bgMusic.pause(); // 🔊 WALL HIT
+      statusEl.textContent = "Game Over (wall).";
         endGame();
         return;
     }
@@ -305,7 +360,10 @@ function loop() {
         // self collision
         for (let i = index + 1; i < snake.cells.length; i++) {
             if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
-                statusEl.textContent = "Game Over (self).";
+
+              playSelfSound(); // 🔊 SNAKE HIT ITSELF
+              bgMusic.pause();
+              statusEl.textContent = "Game Over (self).";
                 endGame();
                 return;
             }
@@ -317,9 +375,6 @@ console.log("Current theme:", currentTheme);
 resetGame();
 requestAnimationFrame(loop);
 
-//sounds
-
-const eatSound = new Audio("sounds/impactGeneric_light_002.ogg");
 
 function playEatSound() {
     eatSound.currentTime = 0;
