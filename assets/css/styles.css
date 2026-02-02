@@ -80,6 +80,7 @@ body {
 
 /* Game Container */
 #game-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,6 +90,18 @@ body {
   max-height: 600px;
 }
 
+#game-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+#game-overlay.hidden {
+  display: none;
 /* Background wrapper behind the game, sits below navbar and above footer */
 .game-bg {
   width: 100%;
@@ -149,6 +162,7 @@ footer {
 display: flex;
 justify-content: center;
 align-items: center;
+}
 /* Media Queries */
 
 @media (max-width: 768px) {

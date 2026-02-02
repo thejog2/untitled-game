@@ -1,6 +1,9 @@
 // Game Speed
 let speed = 12; //Default speed
 
+// Stops the game from starting automatically
+let gameStarted = false;
+
 // setting up the game,canvas height and width to be 400 css pixels rendered in 2d //
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
@@ -116,10 +119,6 @@ function resetGame() {
 
 // shared direction handler used by keyboard and on-screen buttons
 function setDirectionFromKey(key) {
-    if (gameOver && (key === "Enter" || key === " ")) {
-        resetGame();
-        return;
-    }
 
     // prevent reversing directly
     if ((key === "ArrowLeft" || key === "a") && snake.dx !== 1) {
@@ -139,6 +138,20 @@ function setDirectionFromKey(key) {
 
 // keyboard input delegates to the shared handler
 document.addEventListener("keydown", (e) => {
+    
+    // Prevent default behavior for arrow keys (scrolling)
+    const scrollKeys = ["ArrowUp", "ArrowDown", " "];
+    if (gameStarted && scrollKeys.includes(e.key)) {
+        e.preventDefault();
+    }
+
+    // Restart Logic
+    if (gameOver && (e.key === "Enter" || e.key === " ")) {
+        resetGame();
+        return;
+    }
+
+    // Pass the key to the shared direction handler
     setDirectionFromKey(e.key);
 });
 
@@ -164,6 +177,7 @@ window.addEventListener('load', () => {
 function loop() {
     requestAnimationFrame(loop);
 
+    if (!gameStarted) return; // Stop everything until the game is started
     if (gameOver) return;
 
     // slow down game
@@ -256,3 +270,9 @@ function loop() {
 console.log("Current theme:", currentTheme);
 resetGame();
 requestAnimationFrame(loop);
+
+document.getElementById("play-btn").addEventListener("click", () => {
+    document.getElementById("game-overlay").classList.add("hidden");
+    gameStarted = true;
+    resetGame();
+});
