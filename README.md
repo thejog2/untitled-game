@@ -108,6 +108,23 @@ User Value: The user can experience and enjoy the game with no bugs or delays. E
 5. Use of AI to help with git pull and merge issues encountered.
 6. During the design process, AI has been used by each team member either to debug code or generate code.
 
+<br>
+<br>
+
+### Team Contributions
+Each team member contributed to design, logic, testing, and deployment.
+GitHub profiles are linked directly within the application under the Team section.
+<br>
+<br>
+
+## Final Notes
+This project meets all required learning outcomes by demonstrating:
+Strong front-end fundamentals.
+Effective JavaScript interactivity.
+Clean deployment and version control.
+Maintainable, readable, and well-documented code.
+
+
 
 
 
