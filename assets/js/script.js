@@ -152,6 +152,15 @@ document.addEventListener("keydown", (e) => {
     setDirectionFromKey(e.key);
 });
 
+document.addEventListener("keydown", () => {
+    eatSound.play().then(() => {
+        eatSound.pause();
+        eatSound.currentTime = 0;
+    });
+}, { once: true });
+
+
+
 // wire on-screen arrow buttons (for mobile/tablet)
 window.addEventListener('load', () => {
     const arrowButtons = document.querySelectorAll('.arrow-btn');
@@ -238,6 +247,7 @@ function loop() {
 
         // food collision
         if (cell.x === food.x && cell.y === food.y) {
+            playEatSound(); // 🔊 PLAY SOUND HERE
             if (food.spoiled) {
                 // spoiled: shrink and lose score
                 snake.maxCells = Math.max(2, snake.maxCells - 1);
@@ -268,6 +278,14 @@ console.log("Current theme:", currentTheme);
 resetGame();
 requestAnimationFrame(loop);
 
+//sounds
+
+const eatSound = new Audio("sounds/impactGeneric_light_002.ogg");
+
+function playEatSound() {
+  eatSound.currentTime = 0;
+  eatSound.play();
+}
 document.getElementById("play-btn").addEventListener("click", () => {
     document.getElementById("game-overlay").classList.add("hidden");
     gameStarted = true;
