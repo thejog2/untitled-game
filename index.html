@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Snake Snacks</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -22,7 +22,7 @@
                 <div class="logo-placeholder me-2 animated-logo">
                     <img src="assets/images/snake-logo.png" alt="Snake Logo" class="img-fluid" style="height: 80px; width: 80px;">
                 </div>
-                <h1 class="fw-bold">Snake Game</h1>
+                <h1 class="fw-bold">Snake Snacks</h1>
             </div>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarButtons">
@@ -93,14 +93,33 @@
                     </div>
                 </div>
             </div>
+             
     </header>
+    
+   
+
+
     <!-- Main Content -->
+     
     <main class="flex-grow-1 d-flex flex-column justify-content-center align-items-center">
         <div id="game-container">
             <div id="game-overlay">
                 <button id="play-btn" class="btn btn-success btn-lg px-4 py-2">Play Game!</button>
             </div>
             <canvas id="game" width="400" height="400"></canvas>
+      
+        <!-- Theme Buttons -->
+        <button onclick="setTheme('default')">default</button>
+         <button onclick="setTheme('underwater')">underwater</button>
+        <button onclick="setTheme('desert')">desert</button>
+        <button onclick="setTheme('jungle')">jungle</button>
+         <button onclick="setTheme('sky')">sky</button> 
+  
+
+        <div class="game-bg w-100 d-flex justify-content-center">
+            <div id="game-container">
+                <canvas id="game" width="400" height="400"></canvas>
+            </div>
         </div>
 
     <!-- Score + Stauts -->

@@ -34,7 +34,31 @@ const themes = {
         foodFreshColor: "#7FDBFF",
         foodSpoiledColor: "#39CCCC",
     },
-};
+    desert: {
+        backgroundColor: "#FFDC00",
+        snakeheadColor: "#4A3728#",
+        snakeColor: "#7D5C3E",
+        foodFreshColor: "#FF4136",  
+        foodSpoiledColor: "#B10DC9",
+},
+
+     jungle: {
+        backgroundColor: "#1A472A",
+        snakeheadColor: "#006400",
+        snakeColor: "#32CD32",
+        foodFreshColor: "#FF6B6B",  
+        foodSpoiledColor: "#8B4513",
+},
+
+    sky: {
+        backgroundColor: "#87CEEB",
+        snakeheadColor: "#0fc8c2",
+        snakeColor: "#FFFFFF",
+        foodFreshColor: "#FFD700",
+        foodSpoiledColor: "#FF4500",
+    },
+
+}
 // define current theme, starts as default
 let currentTheme = themes.default;
 
