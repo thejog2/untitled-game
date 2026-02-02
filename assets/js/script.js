@@ -139,8 +139,6 @@ function resetGame() {
     frameCount = 0;
     statusEl.textContent = "Playing";
     resetFood();
-    bgMusic.currentTime = 0;
-    bgMusic.play();
 
     ctx.fillStyle = currentTheme.backgroundColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -367,6 +365,10 @@ function playEatSound() {
 }
 
 document.getElementById("play-btn").addEventListener("click", () => {
+    // User initiated audio context
+    bgMusic.currentTime = 0;
+    bgMusic.play();
+    
     // Always reset the game
     resetGame();
 
