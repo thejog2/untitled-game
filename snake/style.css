@@ -1,7 +1,4 @@
-/*GOOGLE FONTS*/
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap');
-</style>
+
 
 .syne-mono-regular {
   font-family: "Syne Mono", monospace;
@@ -9,7 +6,18 @@
   font-style: normal;
 }
 
-
+#backgroundimage {
+background-image: url("./images/background.png");
+width: 100vw;
+height: 100vh; 
+background-size: 100% 100%;
+background-repeat: no-repeat;
+position: relative;
+} 
+nav
+{
+overflow: auto;
+}
 
 
 body {

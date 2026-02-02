@@ -1,6 +1,15 @@
 /* Google Fonts */
 @import url("https://fonts.googleapis.com/css2?family=Syne+Mono&display=swap");
 
+.background-bg {
+  background-image: url("./assets/images/background.png");
+  background-size: cover;       /* makes it fill the section */
+  background-position: center;  /* keeps it centered */
+  background-repeat: no-repeat;
+
+}
+
+
 /* CSS Variables for Theming */
 :root {
   --ui-bg: #edf5f2;
@@ -81,6 +90,24 @@ body {
   margin-top: 50px;
 }
 
+/* Background wrapper behind the game, sits below navbar and above footer */
+.game-bg {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+  background-image: url("../images/background.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+}
+
+/* ensure the game canvas sits above the background image */
+#game-container {
+  position: relative;
+  z-index: 1;
+}
+
 #game-grid {
   display: grid;
   grid-template-columns: repeat(20, 1fr);
@@ -141,4 +168,5 @@ align-items: center;
     width: 70vmin;
     height: 70vmin;
   }
+}
 }
