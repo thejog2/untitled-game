@@ -27,7 +27,7 @@ A working product which is viewable on the following screen display sizes:
 5. Laptop,
 6. PC Monitor.
 
-Intuative navigation system
+Intuitive navigation system
 
 Instructions on playing the game
 
@@ -42,19 +42,52 @@ The ability to change difficulty within the game
 Won't have
 High score area
 
-**USE OF AI**
+---
+
+## Features
+- Classic Snake gameplay using HTML `<canvas>`.
+- Keyboard and button-controlled movement enabled.
+- Real-time dynamic score and game status updates.
+- Multiple visual themes (default, underwater, desert, jungle, sky) included.
+- Collision detection (walls and self).
+- Sound effects for gameplay feedback and user experience.
+- Start screen overlay with controlled game initialisation.
+- Fully responsive layout using Bootstrap and Flexbox.
+- Clear navigation and consistent UI styling.
+- Accessible buttons, readable typography, and structured sections.
+- JavaScript was used to:
+  - Update the canvas in real time
+  - Control snake movement and growth
+  - Update score and status dynamically
+  - Toggle game states (start, play, game over)
+- Multiple DOM elements updated in real time based on user input
+- Deployed via GitHub pages (Cloud deployment).
+**Live Site:**  
+https://thejog2.github.io/snake-game/
+
+
+### Code Validation, checks and tests.
+- HTML and CSS validated using the suitable validators by the group.
+- JavaScript reviewed to ensure no console errors during gameplay.
+- Browser developer tools, including **Lighthouse**, were used to assess accessibility compliance and optimise overall site performance
+
+**Responsive Testing**
+- Tested across multiple screen sizes by team members and family members.
+- Adaptable layout for desktop, tablet, and mobile.
+- Canvas and controls remain usable at all breakpoints and on all devices.
+
+
+
+### USE OF AI
 
 1. Snake logo generated using AI
 2. The basic structure of the game was generated using Co-Pilot
 3. A background image was generated using AI
-4. Modification of the team members photographs
-
-During the design process AI has been used by each team member either to debug code or generate code
-
-
+4. Modification of the team members' photographs.
+5. Use of AI to help with git pull and merge issues encountered.
+6. During the design process, AI has been used by each team member either to debug code or generate code.
 
 
 
-**USE OF AI**
-Snake logo generated using AI
+
 
