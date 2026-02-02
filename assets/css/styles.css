@@ -136,6 +136,11 @@ body {
   min-height: 1.2rem; /* Ensures space for status messages */
 }
 
+.card-img-top {
+  height: 75%;
+
+}
+
 /* Footer */
 footer {
   background-color: var(--ui-accent);
