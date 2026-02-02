@@ -68,8 +68,8 @@ bgMusic.volume = 0.1;
 const eatSound = new Audio("sounds/impactGeneric_light_002.ogg");
 
 function playEatSound() {
-  eatSound.currentTime = 0;
-  eatSound.play();
+    eatSound.currentTime = 0;
+    eatSound.play();
 }
 document.getElementById("play-btn").addEventListener("click", () => {
     document.getElementById("game-overlay").classList.add("hidden");
@@ -81,13 +81,13 @@ const wallSound = new Audio("sounds/jingles_HIT16.ogg");
 const selfSound = new Audio("sounds/jingles_HIT09.ogg");
 
 function playWallSound() {
-  wallSound.currentTime = 0;
-  wallSound.play();
+    wallSound.currentTime = 0;
+    wallSound.play();
 }
 
 function playSelfSound() {
-  selfSound.currentTime = 0;
-  selfSound.play();
+    selfSound.currentTime = 0;
+    selfSound.play();
 }
 
 
@@ -139,8 +139,6 @@ function resetGame() {
     frameCount = 0;
     statusEl.textContent = "Playing";
     resetFood();
-    bgMusic.currentTime = 0;
-    bgMusic.play();
 
     ctx.fillStyle = currentTheme.backgroundColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -201,21 +199,6 @@ document.addEventListener("keydown", () => {
 
     bgMusic.play(); // start music ONCE
 }, { once: true });
-
-    // Pass the key to the shared direction handler
-    setDirectionFromKey(e.key);
-});
-
-document.addEventListener(
-    "keydown",
-    () => {
-        eatSound.play().then(() => {
-            eatSound.pause();
-            eatSound.currentTime = 0;
-        });
-    },
-    { once: true },
-);
 
 // wire on-screen arrow buttons (for mobile/tablet)
 window.addEventListener("load", () => {
@@ -296,9 +279,9 @@ function loop() {
         snake.y < 0 ||
         snake.y >= tileCount
     ) {
-       playWallSound(); 
-       bgMusic.pause(); // 🔊 WALL HIT
-      statusEl.textContent = "Game Over (wall).";
+        playWallSound();
+        bgMusic.pause(); // 🔊 WALL HIT
+        statusEl.textContent = "Game Over (wall).";
         endGame();
         return;
     }
@@ -361,9 +344,9 @@ function loop() {
         for (let i = index + 1; i < snake.cells.length; i++) {
             if (cell.x === snake.cells[i].x && cell.y === snake.cells[i].y) {
 
-              playSelfSound(); // 🔊 SNAKE HIT ITSELF
-              bgMusic.pause();
-              statusEl.textContent = "Game Over (self).";
+                playSelfSound(); // 🔊 SNAKE HIT ITSELF
+                bgMusic.pause();
+                statusEl.textContent = "Game Over (self).";
                 endGame();
                 return;
             }
@@ -382,6 +365,10 @@ function playEatSound() {
 }
 
 document.getElementById("play-btn").addEventListener("click", () => {
+    // User initiated audio context
+    bgMusic.currentTime = 0;
+    bgMusic.play();
+    
     // Always reset the game
     resetGame();
 
